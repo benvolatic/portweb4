@@ -1,0 +1,12 @@
+<h1>Photos</h1>
+<%= link_to 'Add New Photo', new_admin_photo_path %>
+
+<ul>
+  <% @photos.each do |photo| %>
+    <li>
+      <%= photo.title %>
+      <%= link_to 'Edit', edit_admin_photo_path(photo) %>
+      <%= link_to 'Delete', admin_photo_path(photo), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>

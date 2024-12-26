@@ -3,6 +3,10 @@
   <div>
     <h2><%= photo.title %></h2>
     <p><%= photo.description %></p>
-    <%= image_tag photo.image_url if photo.image_url.present? %>
+    <% if photo.images.attached? %>
+      <% photo.images.each do |image| %>
+        <%= image_tag image, alt: photo.title, width: 300 %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>

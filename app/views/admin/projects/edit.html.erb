@@ -1,0 +1,22 @@
+<h1>Edit Project</h1>
+
+<%= form_with model: @project, url: admin_project_path(@project), method: :patch, local: true do |f| %>
+  <div>
+    <%= f.label :title, "Title" %><br>
+    <%= f.text_field :title, required: true, value: @project.title %>
+  </div>
+
+  <div>
+    <%= f.label :description, "Description" %><br>
+    <%= f.text_area :description, value: @project.description %>
+  </div>
+
+  <div>
+    <%= f.label :url, "Project URL" %><br>
+    <%= f.text_field :url, placeholder: "https://example.com", required: true, value: @project.url %>
+  </div>
+
+  <div>
+    <%= f.submit "Update Project" %>
+  </div>
+<% end %>

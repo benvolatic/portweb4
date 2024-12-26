@@ -1,0 +1,22 @@
+<h1>New Project</h1>
+
+<%= form_with model: @project, url: admin_projects_path, local: true do |f| %>
+  <div>
+    <%= f.label :title, "Title" %><br>
+    <%= f.text_field :title, required: true %>
+  </div>
+
+  <div>
+    <%= f.label :description, "Description" %><br>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :url, "Project URL" %><br>
+    <%= f.text_field :url, placeholder: "https://example.com", required: true %>
+  </div>
+
+  <div>
+    <%= f.submit "Create Project" %>
+  </div>
+<% end %>
