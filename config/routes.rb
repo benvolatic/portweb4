@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
   # Public-facing routes
   root "home#index"
-  get "/photos", to: "photos#index"
-  get "/projects", to: "projects#index"
-  resources :posts, only: [:index, :show, :new, :create]
   resources :photos, only: [:index, :show]
+  resources :projects, only: [:index]
+  resources :posts, only: [:index, :show, :new, :create]
 
   # Admin-facing routes
   namespace :admin do
-    get '/', to: 'dashboard#index', as: :dashboard
+    resources :sessions, only: [:new, :create, :destroy]
+    get '/login', to: 'sessions#new', as: :login
+    delete '/logout', to: 'sessions#destroy', as: :logout
+    get '/dashboard', to: 'dashboard#index', as: :dashboard
+    get '/', to: 'dashboard#index' # Admin root redirects to dashboard
     resources :photos, only: [:index, :new, :create, :edit, :update, :destroy, :show]
     resources :projects, only: [:index, :new, :create, :edit, :update, :destroy, :show]
   end
