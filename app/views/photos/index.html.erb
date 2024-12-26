@@ -1,0 +1,8 @@
+<h1>Photo Gallery</h1>
+<% @photos.each do |photo| %>
+  <div>
+    <h2><%= photo.title %></h2>
+    <p><%= photo.description %></p>
+    <%= image_tag photo.image_url if photo.image_url.present? %>
+  </div>
+<% end %>

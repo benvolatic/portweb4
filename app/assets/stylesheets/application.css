@@ -8,3 +8,26 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+ nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+  }
+  
+  nav ul li {
+    display: inline;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  nav ul li a:hover {
+    text-decoration: underline;
+  }
+  
