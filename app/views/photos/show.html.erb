@@ -1,15 +1,30 @@
-<h1><%= @photo.title %></h1>
-
-<p><strong>Description:</strong></p>
-<p><%= @photo.description %></p>
-
-<h2>Image:</h2>
-<% if @photo.images.attached? %>
-  <% @photo.images.each do |image| %>
-    <%= image_tag image, alt: @photo.title, width: 600 %>
+<div class="photo-container">
+  <!-- Previous Link -->
+  <% if @previous_photo %>
+    <div class="navigation previous">
+      <%= link_to '← Previous', photo_path(@previous_photo), class: "btn btn-secondary" %>
+    </div>
   <% end %>
-<% end %>
 
-<div>
-  <%= link_to 'Back to Gallery', photos_path %>
+  <!-- Image Section -->
+  <div class="photo-display">
+    <% if @photo.images.attached? %>
+      <% @photo.images.each do |image| %>
+        <%= image_tag(image, alt: @photo.title, class: "photo-image") %>
+      <% end %>
+    <% else %>
+      <p>No image available</p>
+    <% end %>
+  </div>
+
+  <!-- Next Link -->
+  <% if @next_photo %>
+    <div class="navigation next">
+      <%= link_to 'Next →', photo_path(@next_photo), class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="back-link">
+  <%= link_to 'Back to Gallery', photos_path, class: "btn btn-primary" %>
 </div>

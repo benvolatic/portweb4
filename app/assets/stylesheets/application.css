@@ -53,4 +53,66 @@
   .photo-thumbnail:hover {
     transform: scale(1.05);
   }
+  .btn {
+    padding: 10px 15px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+  }
   
+  .btn-danger {
+    background: none;
+    color: red;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  
+  .btn:hover {
+    opacity: 0.8;
+  }
+  .photo-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+  .photo-navigation .btn {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    background-color: #6c757d; /* Secondary button color */
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .photo-navigation .btn:hover {
+    opacity: 0.8;
+  }
+  
+  .navigation.previous {
+    margin-right: auto;
+  }
+  
+  .navigation.next {
+    margin-left: auto;
+  }
+  @media (max-width: 768px) {
+    .homepage-nav ul {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .cta-buttons {
+      flex-direction: column;
+      margin-top: 10px;
+    }
+  
+    .btn {
+      margin-bottom: 10px;
+    }
+  }

@@ -38,7 +38,14 @@ module Admin
     
     
 
-    def show; end
+    def show
+      @photo = Photo.find(params[:id])
+      @next_photo = Photo.where("id > ?", @photo.id).order(:id).first
+      @previous_photo = Photo.where("id < ?", @photo.id).order(id: :desc).first
+    rescue ActiveRecord::RecordNotFound
+      redirect_to admin_photos_path, alert: 'Photo not found.'
+    end
+    
 
     def edit; end
 
