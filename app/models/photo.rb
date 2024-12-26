@@ -1,2 +1,4 @@
 class Photo < ApplicationRecord
-end
+    has_many_attached :images
+  end
+  

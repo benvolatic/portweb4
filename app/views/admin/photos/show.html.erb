@@ -1,0 +1,21 @@
+<h1><%= @photo.title %></h1>
+
+<p><strong>Description:</strong></p>
+<p><%= @photo.description %></p>
+
+<h2>Image:</h2>
+<% if @photo.images.attached? %>
+  <% @photo.images.each do |image| %>
+    <%= image_tag image, alt: @photo.title, width: 300 %>
+  <% end %>
+<% end %>
+
+<div>
+  <%= link_to 'Edit Photo', edit_admin_photo_path(@photo) %> |
+  <%= link_to 'Delete Photo', admin_photo_path(@photo), 
+            method: :delete, 
+            data: { turbo_method: :delete, confirm: 'Are you sure you want to delete this photo?' }, 
+            class: "btn btn-danger" %>
+
+  <%= link_to 'Back to Photos', admin_photos_path %>
+</div>
