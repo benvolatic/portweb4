@@ -1,0 +1,15 @@
+<h1><%= @photo.title %></h1>
+
+<p><strong>Description:</strong></p>
+<p><%= @photo.description %></p>
+
+<h2>Image:</h2>
+<% if @photo.images.attached? %>
+  <% @photo.images.each do |image| %>
+    <%= image_tag image, alt: @photo.title, width: 600 %>
+  <% end %>
+<% end %>
+
+<div>
+  <%= link_to 'Back to Gallery', photos_path %>
+</div>
