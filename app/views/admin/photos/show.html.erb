@@ -10,6 +10,18 @@
   <% end %>
 <% end %>
 
+<div class="photo-navigation">
+  <!-- Previous Link -->
+  <% if @previous_photo %>
+    <%= link_to '← Previous', admin_photo_path(@previous_photo), class: "btn btn-secondary" %>
+  <% end %>
+
+  <!-- Next Link -->
+  <% if @next_photo %>
+    <%= link_to 'Next →', admin_photo_path(@next_photo), class: "btn btn-secondary" %>
+  <% end %>
+</div>
+
 <div>
   <%= link_to 'Edit Photo', edit_admin_photo_path(@photo) %> |
   <%= link_to 'Delete Photo', admin_photo_path(@photo), 
