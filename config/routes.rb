@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/photos", to: "photos#index"
   get "/projects", to: "projects#index"
   resources :posts, only: [:index, :show, :new, :create]
+  resources :photos, only: [:index, :show]
 
   # Admin-facing routes
   namespace :admin do

@@ -1,12 +1,17 @@
 <h1>Photo Gallery</h1>
-<% @photos.each do |photo| %>
-  <div>
-    <h2><%= photo.title %></h2>
-    <p><%= photo.description %></p>
+
+<div class="photo-grid">
+  <% @photos.each do |photo| %>
     <% if photo.images.attached? %>
       <% photo.images.each do |image| %>
-        <%= image_tag image, alt: photo.title, width: 300 %>
+        <div class="photo-item">
+          <%= link_to image_tag(image, alt: "Photo", class: "photo-thumbnail"), photo_path(photo) %>
+        </div>
       <% end %>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>
+
+<div class="pagination">
+  <%= paginate @photos %>
+</div>
