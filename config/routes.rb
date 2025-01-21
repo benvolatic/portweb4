@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :photos, only: [:index, :show]
   resources :projects, only: [:index]
   resources :posts, only: [:index, :show, :new, :create]
+  get '/resume', to: 'resumes#show', as: :resume
+
 
   # Admin-facing routes
   namespace :admin do
@@ -16,6 +18,11 @@ Rails.application.routes.draw do
     get '/', to: 'dashboard#index' # Admin root redirects to dashboard
     resources :photos, only: [:index, :new, :create, :edit, :update, :destroy, :show]
     resources :projects, only: [:index, :new, :create, :edit, :update, :destroy, :show]
+    resources :resumes, only: [:index, :create, :destroy] do
+      member do
+        patch :set_current
+      end
+    end
   end
 
   # Health check
