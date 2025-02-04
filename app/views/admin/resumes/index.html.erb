@@ -1,0 +1,43 @@
+<div class="container">
+  <h1 class="text-3xl font-bold mb-6">Resume Dashboard</h1>
+
+  <div class="mb-6">
+    <h2 class="text-2xl mb-4">Upload New Resume</h2>
+    <%= form_with model: Resume.new, url: admin_resumes_path, local: true, class: "space-y-4" do |f| %>
+      <div>
+        <%= f.label :file, "Upload File", class: "block font-bold mb-2" %>
+        <%= f.file_field :file, class: "block w-full" %>
+      </div>
+      <div>
+        <%= f.submit "Upload Resume", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <h2 class="text-2xl mb-4">Manage Resumes</h2>
+    <table class="table-auto w-full">
+      <thead>
+        <tr>
+          <th class="text-left">File</th>
+          <th class="text-left">Current</th>
+          <th class="text-left">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @resumes.each do |resume| %>
+          <tr>
+            <td><%= link_to resume.file.filename, url_for(resume.file), target: "_blank" %></td>
+            <td><%= resume.current ? "Yes" : "No" %></td>
+            <td>
+              <% unless resume.current %>
+                <%= button_to "Set as Current", set_current_admin_resume_path(resume), method: :patch, class: "btn btn-secondary" %>
+              <% end %>
+              <%= button_to "Delete", admin_resume_path(resume), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -7,11 +7,4 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-Photo.create!([
-  { title: 'Beach Sunset', description: 'A beautiful beach sunset.', image_url: 'https://example.com/sunset.jpg' },
-  { title: 'Mountain Hike', description: 'A scenic mountain trail.', image_url: 'https://example.com/mountain.jpg' }
-])
-Project.create!([
-  { title: 'Portfolio Website', description: 'My personal portfolio site.', url: 'https://example.com/portfolio' },
-  { title: 'E-commerce App', description: 'A modern e-commerce application.', url: 'https://example.com/ecommerce' }
-])
+

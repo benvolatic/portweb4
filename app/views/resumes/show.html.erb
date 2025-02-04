@@ -1,0 +1,23 @@
+<div class="relative">
+  <!-- Title -->
+  <h1 class="text-3xl font-title font-bold mb-6 text-center">This is My Current Resume</h1>
+
+  <% if @current_resume.present? %>
+    <!-- Styled Download Button -->
+    <a 
+      href="<%= url_for(@current_resume.file) %>" 
+      class="absolute right-4 top-4 bg-secondary text-white font-title font-bold py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+      download
+    >
+      Download Resume
+    </a>
+
+    <!-- Resume Viewer -->
+    <iframe 
+      src="<%= url_for(@current_resume.file) %>" 
+      class="w-full h-screen mt-4 border rounded"
+    ></iframe>
+  <% else %>
+    <p class="text-lg text-gray-500 text-center">No resume is currently available.</p>
+  <% end %>
+</div>

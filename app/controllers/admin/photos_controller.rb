@@ -3,7 +3,7 @@ module Admin
     before_action :set_photo, only: %i[show edit update destroy]
 
     def index
-      @photos = Photo.includes(images_attachments: :blob).all
+      @photos = Photo.with_attached_images.page(params[:page]).per(10)
     end
 
     def new

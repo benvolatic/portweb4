@@ -1,4 +1,4 @@
-<nav class="bg-primary font-title text-white p-4 flex items-center relative" data-controller="dropdown">
+<nav class="bg-primary font-title text-white p-4 flex items-center relative z-50" data-controller="dropdown">
   <!-- Main Dropdown Button -->
   <button 
   class="text-3xl mr-4 focus:outline-none" 
@@ -13,11 +13,12 @@
   <!-- Main Dropdown Menu -->
   <ul 
     id="menu" 
-    class="hidden absolute bg-secondary text-white text-xl rounded shadow-md p-4 space-y-2 top-16 left-4 w-48"
+    class="hidden absolute bg-secondary text-white text-xl rounded shadow-md p-4 space-y-2 top-16 left-4 w-48 z-50"
     data-dropdown-target="menu"
   >
     <li><%= link_to 'Home', root_path, class: 'block hover:underline' %></li>
     <li><%= link_to 'Projects', projects_path, class: 'block hover:underline' %></li>
+    <li><%= link_to 'Resume', resumes_path, class: 'block hover:underline' %></li>
     
     <!-- Extras Dropdown -->
     <li class="relative" data-controller="dropdown">
@@ -31,7 +32,7 @@
 
       <!-- Nested Dropdown Menu -->
       <ul 
-        class="hidden absolute bg-secondary text-white text-lg rounded shadow-md p-3 space-y-1 top-0 left-full ml-2 w-40"
+        class="hidden absolute bg-secondary text-white text-lg rounded shadow-md p-3 space-y-1 top-0 left-full ml-2 w-40 z-50"
         data-dropdown-target="menu"
       >
         <li><%= link_to 'Photos', photos_path, class: 'block hover:underline' %></li>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_26_002218) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_22_200542) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -29,6 +29,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_26_002218) do
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+    t.index ["record_type", "record_id"], name: "index_active_storage_attachments_on_record_type_and_record_id"
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
@@ -47,6 +48,14 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_26_002218) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
   end
 
   create_table "photos", force: :cascade do |t|
@@ -68,6 +77,13 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_26_002218) do
     t.string "title"
     t.text "description"
     t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "resumes", force: :cascade do |t|
+    t.string "file"
+    t.boolean "current"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

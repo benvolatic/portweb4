@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   def index
-    @photos = Photo.includes(images_attachments: :blob).page(params[:page]).per(12)
+    @photos = Photo.with_attached_images.page(params[:page]).per(6)
   end
 
   def show
