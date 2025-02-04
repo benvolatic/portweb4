@@ -5,7 +5,7 @@
     <% if photo.images.attached? %>
       <% photo.images.each do |image| %>
         <div class="photo-item">
-          <%= link_to image_tag(image, alt: "Photo", class: "photo-thumbnail"), photo_path(photo) %>
+          <%= link_to image_tag(image.variant(resize_to_limit: [300, 300]), alt: "Photo", class: "photo-thumbnail"), photo_path(photo) %>
         </div>
       <% end %>
     <% end %>

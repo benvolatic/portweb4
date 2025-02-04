@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :photos, only: [:index, :show]
   resources :projects, only: [:index]
   resources :posts, only: [:index, :show, :new, :create]
-  get '/resume', to: 'resumes#show', as: :resume
+  get '/resumes', to: 'resumes#show', as: :resumes
 
 
   # Admin-facing routes
